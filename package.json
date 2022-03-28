@@ -1,0 +1,19 @@
+{
+  "name": "lottery",
+  "version": "1.0.0",
+  "description": "Lottery software developed with the Solidity programming language",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseAntonioPdosSantos/lottery.git"
+  },
+  "author": "José Antonio Pinto dos Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoseAntonioPdosSantos/lottery/issues"
+  },
+  "homepage": "https://github.com/JoseAntonioPdosSantos/lottery#readme"
+}
