@@ -2,24 +2,27 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 contract Lottery {
-    address public manager;
-    address[] public players;
+    address payable public manager;
+    address payable [] public players;
 
     constructor(){
-        manager = msg.sender;
+        manager = getCurrentAddress();
     }
 
     function enter() public payable {
         require(msg.value > .01 ether);
-        players.push(msg.sender);
+        players.push(getCurrentAddress());
     }
 
+    function getCurrentAddress() private view returns (address payable) {
+        return payable(msg.sender);
+    }
     function random() private view returns (uint) {
         return uint(keccak256(abi.encodePacked(block.difficulty, block.timestamp, players)));
     }
 
     function pickWinner() public {
         uint index = random() % players.length;
-        players[index] = manager;
+        players[index].transfer(address(this).balance);
     }
 }
