@@ -79,4 +79,15 @@ describe('Lottery Contract', () => {
         
     });
 
+    it('only manager can call pickWinner', async () => {
+        try {
+            await lottery.options.pickWinner().send({
+                from: accounts[1]
+            });
+            assert(false);
+        } catch(err) {
+            assert(err);
+        }
+    });
+
 });
