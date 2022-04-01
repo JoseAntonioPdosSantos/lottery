@@ -13,14 +13,14 @@ const abi = Lottery.abi;
 beforeEach(async () => {
     accounts = await web3.eth.getAccounts();
 
-    lottery = new web3.eth.Contract(JSON.parse(abi))
+    lottery = await new web3.eth.Contract(abi)
     .deploy({ data: bytecode })
-    .send({ from: accounts[0], gas: '100000' });
+    .send({ from: accounts[0], gas: '1000000' });
 
 });
 
 describe('Lottery Contract', () => {
-    if('deploys a contract', () => {
-        assert.ok(lottery,options,address);
+    it('deploys a contract', () => {
+        assert.ok(lottery.options.address);
     });
 });
