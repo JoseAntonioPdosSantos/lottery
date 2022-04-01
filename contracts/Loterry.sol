@@ -21,10 +21,14 @@ contract Lottery {
         return uint(keccak256(abi.encodePacked(block.difficulty, block.timestamp, players)));
     }
 
-    function pickWinner() public {
-        require(msg.sender == manager);
+    function pickWinner() public onlyManager {
         uint index = random() % players.length;
         players[index].transfer(address(this).balance);
         players = new address payable [](0);
+    }
+
+    modifier onlyManager() {
+        require(msg.sender == manager);
+        _;
     }
 }
