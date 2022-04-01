@@ -3,7 +3,10 @@ const fs = require("fs");
 const solc = require("solc");
 
 const contractPath = path.resolve(__dirname, "contracts", "Lottery.sol");
+console.log('contractPath --> ', contractPath)
 const source = fs.readFileSync(contractPath, { encoding: "utf8" });
+
+console.log('source --> ', source)
 
 var input = {
   language: "Solidity",
